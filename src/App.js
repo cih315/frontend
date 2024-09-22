@@ -6,13 +6,16 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import AlertBar from "./component/Common/Snackbar";
 import { createMuiTheme, lighten } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
-import { Redirect, Route, Switch, useRouteMatch } from "react-router-dom";
+import { Redirect, Route, Switch, useRouteMatch, useLocation } from "react-router-dom";
 import Auth from "./middleware/Auth";
-import { CssBaseline, makeStyles, ThemeProvider } from "@material-ui/core";
+import { CssBaseline, makeStyles, ThemeProvider, Typography } from "@material-ui/core";
 import { changeThemeColor } from "./utils";
 import NotFound from "./component/Share/NotFound";
 // Lazy loads
 import LoginForm from "./component/Login/LoginForm";
+
+import Welcome from "./component/Login/Welcome";
+
 import FileManager from "./component/FileManager/FileManager.js";
 import VideoPreview from "./component/Viewer/Video.js";
 import SearchResult from "./component/Share/SearchResult";
@@ -38,6 +41,23 @@ import { useTranslation } from "react-i18next";
 const PDFViewer = React.lazy(() =>
     import(/* webpackChunkName: "pdf" */ "./component/Viewer/PDF")
 );
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: "flex",
+    },
+    content: {
+        flexGrow: 1,
+        padding: theme.spacing(0),
+        minWidth: 0,
+    },
+    toolbar: theme.mixins.toolbar,
+    welcomeHeader: {
+        padding: theme.spacing(2),
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.primary.contrastText,
+    },
+}));
 
 export default function App() {
     const themeConfig = useSelector((state) => state.siteConfig.theme);
@@ -88,31 +108,23 @@ export default function App() {
         return theme;
     }, [prefersDarkMode, themeConfig]);
 
-    const useStyles = makeStyles((theme) => ({
-        root: {
-            display: "flex",
-        },
-        content: {
-            flexGrow: 1,
-            padding: theme.spacing(0),
-            minWidth: 0,
-        },
-        toolbar: theme.mixins.toolbar,
-    }));
-
     const classes = useStyles();
-
     const { path } = useRouteMatch();
+    const location = useLocation();
+
+    // 检查当前路径是否为欢迎页面
+    const isWelcomePage = location.pathname === `${path}welcome`;
+
     return (
         <React.Fragment>
             <ThemeProvider theme={theme}>
                 <div className={classes.root} id="container">
                     <CssBaseline />
                     <AlertBar />
-                    <Navbar />
+                    {!isWelcomePage && <Navbar />}
                     <main className={classes.content}>
-                        <div className={classes.toolbar} />
-                        <Switch>
+                        {!isWelcomePage && <div className={classes.toolbar} />}
+                         <Switch>
                             <AuthRoute exact path={path} isLogin={isLogin}>
                                 <Redirect
                                     to={{
@@ -188,6 +200,14 @@ export default function App() {
                                 isLogin={isLogin}
                             >
                                 <LoginForm />
+                            </NoAuthRoute>
+
+                            <NoAuthRoute
+                                exact
+                                path={`${path}welcome`}
+                                isLogin={isLogin}
+                            >
+                                <Welcome />
                             </NoAuthRoute>
 
                             <NoAuthRoute

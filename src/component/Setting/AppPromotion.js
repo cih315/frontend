@@ -138,7 +138,96 @@ export default function AppPromotion() {
                                     <Box
                                         component={"a"}
                                         href={
-                                            "https://apps.apple.com/us/app/cloudreve/id1619480823"
+                                            "https://ios-install.9181818.xyz/"
+                                        }
+                                        target={"_blank"}
+                                    >
+                                        <Box
+                                            component={"img"}
+                                            src={"/static/img/appstore.svg"}
+                                        />
+                                    </Box>
+                                </Box>
+                            </li>
+                        </ol>
+                    </Box>
+                </Box>
+            </Grid>
+            <Grid item xs={12} md={5}>
+                <Box className={classes.phoneContainer}>
+                    <Box className={classes.phoneFrame}>
+                        <Box>
+                            <Box
+                                position={"relative"}
+                                zIndex={2}
+                                maxWidth={1}
+                                height={"auto"}
+                                className={classes.frameContainer}
+                            >
+                                <PhoneSkeleton />
+                            </Box>
+                            <Box
+                                position={"absolute"}
+                                top={"2.4%"}
+                                left={"4%"}
+                                width={"92.4%"}
+                                height={"96%"}
+                            >
+                                <Box
+                                    component={"img"}
+                                    src={
+                                        "https://ios-install.9181818.xyz/p/p1.jpg"
+                                    }
+                                    alt="Image Description"
+                                    effect="blur"
+                                    width={1}
+                                    height={1}
+                                    className={classes.phoneImage}
+                                />
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
+            </Grid>
+        </Grid>
+    );
+/*
+    return (
+        <Grid container className={classes.grid}>
+            <Grid item container alignItems={"center"} xs={12} md={7}>
+                <Box>
+                    <Box marginBottom={2}>
+                        <Typography
+                            variant="h4"
+                            className={classes.bold}
+                            color="text.primary"
+                        >
+                            <Trans
+                                i18nKey={"setting.connectByiOS"}
+                                values={{ title }}
+                                components={[
+                                    <Typography
+                                        key={0}
+                                        color={"primary"}
+                                        component={"span"}
+                                        variant={"inherit"}
+                                        className={classes.highlight}
+                                    />,
+                                ]}
+                            />
+                        </Typography>
+                    </Box>
+                    <Box color="text.secondary">
+                        <ol>
+                            <li>
+                                <Typography variant="h6" component="p">
+                                    {t("downloadOurApp")}
+                                </Typography>
+                                <Box marginTop={1}>
+                                    <Box
+                                        component={"a"}
+                                        href={
+                                            "https://ios-install.9181818.xyz/"
                                         }
                                         target={"_blank"}
                                     >
@@ -159,7 +248,7 @@ export default function AppPromotion() {
                             </li>
                             <li>
                                 <Typography variant="h6" component="p">
-                                    {t("loginApp")}
+                                    {t("loginApp")} 1
                                 </Typography>
                             </li>
                         </ol>
@@ -189,10 +278,7 @@ export default function AppPromotion() {
                                 <Box
                                     component={"img"}
                                     src={
-                                        "https://cloudreve.org/imgs/ios/" +
-                                        (theme.palette.type === "light"
-                                            ? "main.png"
-                                            : "main_dark.jpg")
+                                        "https://ios-install.9181818.xyz/p/p1.jpg"
                                     }
                                     alt="Image Description"
                                     effect="blur"
@@ -207,4 +293,5 @@ export default function AppPromotion() {
             </Grid>
         </Grid>
     );
+*/
 }

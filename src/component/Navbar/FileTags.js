@@ -289,8 +289,8 @@ export default function FileTag() {
                         </ListItem>
                         {[
                             {
-                                key: t("navbar.videos"),
-                                id: "video",
+                                key: "中转盘",
+                                id: "magnet",
                                 icon: (
                                     <VideoIcon
                                         className={[
@@ -300,7 +300,20 @@ export default function FileTag() {
                                     />
                                 ),
                             },
-                            {
+
+                              {
+                                  key: t("navbar.videos"),
+                                  id: "video",
+                                  icon: (
+                                      <VideoIcon
+                                          className={[
+                                              classes.iconFix,
+                                              classes.iconVideo,
+                                          ]}
+                                      />
+                                  ),
+                              },
+                              {
                                 key: t("navbar.photos"),
                                 id: "image",
                                 icon: (

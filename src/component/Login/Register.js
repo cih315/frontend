@@ -167,11 +167,8 @@ function Register() {
             <>
                 {!emailActive && (
                     <Paper className={classes.paper}>
-                        <Avatar className={classes.avatar}>
-                            <RegIcon />
-                        </Avatar>
                         <Typography component="h1" variant="h5">
-                            {t("login.sinUpTitle", { title })}
+                           新用户注册
                         </Typography>
 
                         <form className={classes.form} onSubmit={register}>

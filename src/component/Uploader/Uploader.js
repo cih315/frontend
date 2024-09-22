@@ -86,6 +86,9 @@ export default function Uploader() {
     };
 
     const uploadManager = useMemo(() => {
+
+
+
         return new UploadManager({
             logLevel: "INFO",
             concurrentLimit: parseInt(

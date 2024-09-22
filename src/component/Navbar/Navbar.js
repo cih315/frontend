@@ -17,6 +17,7 @@ import Uploader from "../Uploader/Uploader.js";
 import pathHelper from "../../utils/page";
 import SezrchBar from "./SearchBar";
 import StorageBar from "./StorageBar";
+import ZzBar from "./ZzBar";
 import UserAvatar from "./UserAvatar";
 import UserInfo from "./UserInfo";
 import {
@@ -517,6 +518,7 @@ class NavbarCompoment extends Component {
                         </div>
                         <div>
                             <StorageBar></StorageBar>
+                            <ZzBar></ZzBar>
                         </div>
                     </>
                 )}

@@ -460,9 +460,16 @@ class ContextMenuCompoment extends Component {
                                 <div>
                                     <MenuItem
                                         dense
-                                        onClick={() =>
+                                        onClick={() =>{
+
+                                            if(this.props.search.keywords == "magnet/internal"){
+                                            alert('此格式不支持网页请求，请下载APP再试！')
+                                            } else {
                                             this.props.openParentFolder()
+                                            }
+                                          }
                                         }
+
                                     >
                                         <StyledListItemIcon>
                                             <OpenFolderIcon />
@@ -478,8 +485,17 @@ class ContextMenuCompoment extends Component {
                                 <div>
                                     <MenuItem
                                         dense
-                                        onClick={() =>
-                                            this.openDownload(this.props.share)
+                                        onClick={() =>{
+                                        if(this.props.search.keywords != "magnet/internal")
+                                        {
+                                        this.openDownload(this.props.share)
+                                        }
+                                        else{
+                                            alert('此文件格式仅支持使用 APP 下载，请下载安装后再试！');
+                                        }
+                                        }
+
+
                                         }
                                     >
                                         <StyledListItemIcon>
