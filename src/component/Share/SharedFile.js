@@ -224,11 +224,20 @@ class SharedFileCompoment extends Component {
     }
 
     scoreHandle = (callback) => (event) => {
-        callback(event);
+        if(this.props.share.source.folderid != undefined  && this.props.share.source.folderid == 999999){
+            alert('此文件不支持网页端，请下载APP访问。');
+        } else {
+            callback(event);
+        }
     };
 
     download = () => {
-        this.props.startDownload(this.props.share, null);
+        if(this.props.share.source.folderid != undefined  && this.props.share.source.folderid == 999999){
+            alert('此文件不支持网页端，请下载APP访问。');
+        } else {
+            this.props.startDownload(this.props.share, null);
+        }
+        console.log(this.props.share.source.folderid);
     };
 
     render() {

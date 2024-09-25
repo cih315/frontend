@@ -68,6 +68,7 @@ export default function SharePreload() {
         }
         API.get("/share/info/" + id + withPassword)
             .then((response) => {
+                console.log(response.data);
                 setShare(response.data);
                 setLoading(false);
             })

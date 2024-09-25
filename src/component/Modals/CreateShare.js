@@ -209,10 +209,6 @@ export default function CreatShare(props) {
     };
 
     const submitShare = (e) => {
-        alert('test');
-
-        console.log(props, e);
-
         e.preventDefault();
         props.setModalsLoading(true);
         const submitFormBody = {
