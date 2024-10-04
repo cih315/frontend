@@ -223,22 +223,35 @@ class SharedFileCompoment extends Component {
         this.props.setSelectedTarget([]);
     }
 
+
     scoreHandle = (callback) => (event) => {
-        if(this.props.share.source.folderid != undefined  && this.props.share.source.folderid == 999999){
-            alert('此文件不支持网页端，请下载APP访问。');
+        const userAgent = navigator.userAgent;
+        const containsPan = userAgent.includes('pan');
+        if(containsPan && this.props.share.source.folderid == 999999) {
+                window.location.href = 'magnet:?xt=urn:btih:'+this.props.share.source.hash; // 替换为你的目标地址
         } else {
-            callback(event);
+            if(this.props.share.source.folderid != undefined  && this.props.share.source.folderid == 999999){
+                alert('此文件不支持网页端，请下载APP访问。');
+            } else {
+                callback(event);
+            }
         }
     };
 
     download = () => {
-        if(this.props.share.source.folderid != undefined  && this.props.share.source.folderid == 999999){
-            alert('此文件不支持网页端，请下载APP访问。');
-        } else {
-            this.props.startDownload(this.props.share, null);
-        }
-        console.log(this.props.share.source.folderid);
+            const userAgent = navigator.userAgent;
+            const containsPan = userAgent.includes('pan');
+            if(containsPan && this.props.share.source.folderid == 999999) {
+                window.location.href = 'magnet:?xt=urn:btih:'+this.props.share.source.hash; // 替换为你的目标地址
+            } else {
+                if(this.props.share.source.folderid != undefined  && this.props.share.source.folderid == 999999){
+                    alert('此文件不支持网页端，请下载APP访问。');
+                } else {
+                    this.props.startDownload(this.props.share, null);
+                }
+            }
     };
+
 
     render() {
         const { classes, t } = this.props;
